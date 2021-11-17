@@ -144,6 +144,14 @@
         "env": []
     },
     {
+        "id": "74a065dbe609ed99",
+        "type": "tab",
+        "label": "19. retry",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -1946,5 +1954,129 @@
                 "2c94a22c.91012e"
             ]
         ]
+    },
+    {
+        "id": "27e61f12.c1a15",
+        "type": "inject",
+        "z": "74a065dbe609ed99",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "d7d08440.31b678"
+            ]
+        ]
+    },
+    {
+        "id": "d7d08440.31b678",
+        "type": "function",
+        "z": "74a065dbe609ed99",
+        "name": "Random error",
+        "func": "// Randomly throw an error rather than\n// pass on message.\nif (Math.random() < 0.5) {\n   node.error(\"a random error\", msg);\n} else {\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "f22b1e9a.5d89b"
+            ]
+        ]
+    },
+    {
+        "id": "f22b1e9a.5d89b",
+        "type": "debug",
+        "z": "74a065dbe609ed99",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2166290d.98d736",
+        "type": "delay",
+        "z": "74a065dbe609ed99",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "d7d08440.31b678"
+            ]
+        ]
+    },
+    {
+        "id": "139b836e.7950ed",
+        "type": "catch",
+        "z": "74a065dbe609ed99",
+        "name": "",
+        "scope": [
+            "d7d08440.31b678"
+        ],
+        "uncaught": false,
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "2166290d.98d736",
+                "9c8ab214.0ecaa"
+            ]
+        ]
+    },
+    {
+        "id": "9c8ab214.0ecaa",
+        "type": "debug",
+        "z": "74a065dbe609ed99",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 200,
+        "wires": []
     }
 ]
