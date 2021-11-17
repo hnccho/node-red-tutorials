@@ -152,6 +152,22 @@
         "env": []
     },
     {
+        "id": "bad5e16c3b1a40e4",
+        "type": "tab",
+        "label": "20.  json",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fcc17e8485709233",
+        "type": "tab",
+        "label": "21. xml",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -2078,5 +2094,248 @@
         "x": 380,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "634256b7.2d6818",
+        "type": "inject",
+        "z": "bad5e16c3b1a40e4",
+        "name": "JSON String",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"a\":1}",
+        "payloadType": "str",
+        "x": 270,
+        "y": 140,
+        "wires": [
+            [
+                "a2fe0fc8.095e1"
+            ]
+        ]
+    },
+    {
+        "id": "a2fe0fc8.095e1",
+        "type": "json",
+        "z": "bad5e16c3b1a40e4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "9a4ce2b8.47698"
+            ]
+        ]
+    },
+    {
+        "id": "9a4ce2b8.47698",
+        "type": "debug",
+        "z": "bad5e16c3b1a40e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 590,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "80032e2.7c92cd",
+        "type": "inject",
+        "z": "bad5e16c3b1a40e4",
+        "name": "Object",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"a\":1}",
+        "payloadType": "json",
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "cd40a0f4.4f5ac"
+            ]
+        ]
+    },
+    {
+        "id": "cd40a0f4.4f5ac",
+        "type": "json",
+        "z": "bad5e16c3b1a40e4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "478b4106.4fd7c"
+            ]
+        ]
+    },
+    {
+        "id": "478b4106.4fd7c",
+        "type": "debug",
+        "z": "bad5e16c3b1a40e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1b546d47.9474e3",
+        "type": "inject",
+        "z": "fcc17e8485709233",
+        "name": "XML String",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"a\":1}",
+        "payloadType": "str",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "d72b2bfd.77d068"
+            ]
+        ]
+    },
+    {
+        "id": "1adf407d.6c4fe",
+        "type": "debug",
+        "z": "fcc17e8485709233",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "46638890.8ae758",
+        "type": "inject",
+        "z": "fcc17e8485709233",
+        "name": "Object",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"note\":{\"$\":{\"priority\":\"high\"},\"to\":[\"Nick\"],\"from\":[\"Dave\"],\"heading\":[\"Reminder\"],\"body\":[\"Update the website\"]}}",
+        "payloadType": "json",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "dae1d291.de0d2"
+            ]
+        ]
+    },
+    {
+        "id": "6fefca67.3669e4",
+        "type": "debug",
+        "z": "fcc17e8485709233",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d72b2bfd.77d068",
+        "type": "template",
+        "z": "fcc17e8485709233",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "plain",
+        "template": "<note priority=\"high\">\n  <to>Nick</to>\n  <from>Dave</from>\n  <heading>Reminder</heading>\n  <body>Update the website</body>\n</note>",
+        "output": "str",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "1746464a.87aa4a"
+            ]
+        ]
+    },
+    {
+        "id": "1746464a.87aa4a",
+        "type": "xml",
+        "z": "fcc17e8485709233",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 570,
+        "y": 140,
+        "wires": [
+            [
+                "1adf407d.6c4fe"
+            ]
+        ]
+    },
+    {
+        "id": "dae1d291.de0d2",
+        "type": "xml",
+        "z": "fcc17e8485709233",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "6fefca67.3669e4"
+            ]
+        ]
     }
 ]
