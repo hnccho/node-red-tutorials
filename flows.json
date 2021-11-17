@@ -112,6 +112,14 @@
         "env": []
     },
     {
+        "id": "6297bde743341eaa",
+        "type": "tab",
+        "label": "플로우 15",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -1463,5 +1471,95 @@
                 "38950a5.28d15f6"
             ]
         ]
+    },
+    {
+        "id": "1fccc223.7ba87e",
+        "type": "inject",
+        "z": "6297bde743341eaa",
+        "name": "Inject Array",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0,1,2,3,4,5,6,7,8,9]",
+        "payloadType": "json",
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "b2837466.e02a38"
+            ]
+        ]
+    },
+    {
+        "id": "b2837466.e02a38",
+        "type": "split",
+        "z": "6297bde743341eaa",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 360,
+        "y": 140,
+        "wires": [
+            [
+                "bd97c8ed.a5c8d8"
+            ]
+        ]
+    },
+    {
+        "id": "bd97c8ed.a5c8d8",
+        "type": "delay",
+        "z": "6297bde743341eaa",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "bd66f03e.bdf0c"
+            ]
+        ]
+    },
+    {
+        "id": "bd66f03e.bdf0c",
+        "type": "debug",
+        "z": "6297bde743341eaa",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 140,
+        "wires": []
     }
 ]
