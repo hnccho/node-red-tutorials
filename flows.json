@@ -56,6 +56,14 @@
         "env": []
     },
     {
+        "id": "ab522ae4383fe071",
+        "type": "tab",
+        "label": "8. trigger at interval",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -123,6 +131,7 @@
         "id": "e36406f2.8ef798",
         "type": "inject",
         "z": "6c715b5a6ef774cd",
+        "d": true,
         "name": "",
         "props": [
             {
@@ -600,6 +609,47 @@
         "complete": "false",
         "x": 530,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "372cfc32.bcd244",
+        "type": "inject",
+        "z": "ab522ae4383fe071",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "6c63c499.ce3adc"
+            ]
+        ]
+    },
+    {
+        "id": "6c63c499.ce3adc",
+        "type": "debug",
+        "z": "ab522ae4383fe071",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 510,
+        "y": 160,
         "wires": []
     }
 ]
