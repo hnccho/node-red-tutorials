@@ -224,6 +224,22 @@
         "env": []
     },
     {
+        "id": "ca353880abc5c33b",
+        "type": "tab",
+        "label": "29. http post input",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "27c69a36f610fcf7",
+        "type": "tab",
+        "label": "플로우 13",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -3491,5 +3507,315 @@
         "x": 850,
         "y": 380,
         "wires": []
+    },
+    {
+        "id": "3e1c5107.c1e3ae",
+        "type": "http in",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "url": "/hello-raw",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "cf679478.309868"
+            ]
+        ]
+    },
+    {
+        "id": "cf679478.309868",
+        "type": "template",
+        "z": "ca353880abc5c33b",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{ payload }}!</h1>\n    </body>\n</html>",
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "f3c1a3f0.0c3e6"
+            ]
+        ]
+    },
+    {
+        "id": "f3c1a3f0.0c3e6",
+        "type": "http response",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "5b98a8ac.a46758",
+        "type": "http in",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "url": "/hello-form",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 180,
+        "wires": [
+            [
+                "bba61009.4459f"
+            ]
+        ]
+    },
+    {
+        "id": "bba61009.4459f",
+        "type": "template",
+        "z": "ca353880abc5c33b",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{ payload.name }}!</h1>\n    </body>\n</html>",
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "6ceb930a.93146c"
+            ]
+        ]
+    },
+    {
+        "id": "6ceb930a.93146c",
+        "type": "http response",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "x": 570,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "174f56fd78da515e",
+        "type": "http in",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "url": "/hello-json",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "c0bd9253fd700935"
+            ]
+        ]
+    },
+    {
+        "id": "c0bd9253fd700935",
+        "type": "template",
+        "z": "ca353880abc5c33b",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{ payload.name }}!</h1>\n    </body>\n</html>",
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "eb0004af317eb95c"
+            ]
+        ]
+    },
+    {
+        "id": "eb0004af317eb95c",
+        "type": "http response",
+        "z": "ca353880abc5c33b",
+        "name": "",
+        "x": 570,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c362b989.954ae8",
+        "type": "http in",
+        "z": "27c69a36f610fcf7",
+        "name": "",
+        "url": "/hello-cookie",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "21ddf71f.d00518"
+            ]
+        ]
+    },
+    {
+        "id": "21ddf71f.d00518",
+        "type": "function",
+        "z": "27c69a36f610fcf7",
+        "name": "Format cookies",
+        "func": "msg.payload = JSON.stringify(msg.req.cookies,null,4);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "f3aa98c1.befc18"
+            ]
+        ]
+    },
+    {
+        "id": "f3aa98c1.befc18",
+        "type": "template",
+        "z": "27c69a36f610fcf7",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Cookies</h1>\n        <p></p><a href=\"hello-cookie/add\">Add a cookie</a> &bull; <a href=\"hello-cookie/clear\">Clear cookies</a></p>\n        <pre>{{ payload }}</pre>\n    </body>\n</html>",
+        "x": 620,
+        "y": 140,
+        "wires": [
+            [
+                "f52e2880.180968"
+            ]
+        ]
+    },
+    {
+        "id": "f52e2880.180968",
+        "type": "http response",
+        "z": "27c69a36f610fcf7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 840,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9a2a9a4.0fc0768",
+        "type": "change",
+        "z": "27c69a36f610fcf7",
+        "name": "Redirect to /hello-cookie",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "302",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.location",
+                "pt": "msg",
+                "to": "/hello-cookie",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 200,
+        "wires": [
+            [
+                "f52e2880.180968"
+            ]
+        ]
+    },
+    {
+        "id": "afefb90.53dcf48",
+        "type": "function",
+        "z": "27c69a36f610fcf7",
+        "name": "Add a cookie",
+        "func": "msg.cookies = { };\nmsg.cookies[\"demo-\"+(Math.floor(Math.random()*1000))] = Date.now();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "9a2a9a4.0fc0768"
+            ]
+        ]
+    },
+    {
+        "id": "d5205a2c.db9018",
+        "type": "function",
+        "z": "27c69a36f610fcf7",
+        "name": "Clear cookies",
+        "func": "// Find demo cookies and clear them\nvar cookieNames = Object.keys(msg.req.cookies).filter(function(cookieName) { return /^demo-/.test(cookieName);});\nmsg.cookies = {};\n\ncookieNames.forEach(function(cookieName) {\n    msg.cookies[cookieName] = null;\n});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "9a2a9a4.0fc0768"
+            ]
+        ]
+    },
+    {
+        "id": "fda60c66.04975",
+        "type": "http in",
+        "z": "27c69a36f610fcf7",
+        "name": "",
+        "url": "/hello-cookie/add",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "afefb90.53dcf48"
+            ]
+        ]
+    },
+    {
+        "id": "35285a76.1f8636",
+        "type": "http in",
+        "z": "27c69a36f610fcf7",
+        "name": "",
+        "url": "/hello-cookie/clear",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "d5205a2c.db9018"
+            ]
+        ]
     }
 ]
