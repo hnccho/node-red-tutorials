@@ -200,6 +200,30 @@
         "env": []
     },
     {
+        "id": "241d26f9a758e587",
+        "type": "tab",
+        "label": "26. text manipulation",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c98e3fd140b6e9b6",
+        "type": "tab",
+        "label": "27. create http endpoint",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1f7d7ff06c12347b",
+        "type": "tab",
+        "label": "플로우 11",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -2864,5 +2888,324 @@
                 "7403c68f.21d7c8"
             ]
         ]
+    },
+    {
+        "id": "df6514f0.029748",
+        "type": "inject",
+        "z": "241d26f9a758e587",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "11f53f61.2f7be1"
+            ]
+        ]
+    },
+    {
+        "id": "11f53f61.2f7be1",
+        "type": "template",
+        "z": "241d26f9a758e587",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "one\ntwo\nthree\nfour\nfive",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "760c1d71.c29744"
+            ]
+        ]
+    },
+    {
+        "id": "760c1d71.c29744",
+        "type": "split",
+        "z": "241d26f9a758e587",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "3e427aac.9b9596"
+            ]
+        ]
+    },
+    {
+        "id": "3e427aac.9b9596",
+        "type": "change",
+        "z": "241d26f9a758e587",
+        "name": "Prepend line number",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "(parts.index+1) & \": \" & payload",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 200,
+        "wires": [
+            [
+                "d44d4767.945fd8"
+            ]
+        ]
+    },
+    {
+        "id": "d44d4767.945fd8",
+        "type": "join",
+        "z": "241d26f9a758e587",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 630,
+        "y": 200,
+        "wires": [
+            [
+                "bfe3e43b.85fa88"
+            ]
+        ]
+    },
+    {
+        "id": "bfe3e43b.85fa88",
+        "type": "debug",
+        "z": "241d26f9a758e587",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "59ff2a1.fa600d4",
+        "type": "http in",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "url": "/hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "54c1e70d.ab3e18"
+            ]
+        ]
+    },
+    {
+        "id": "54c1e70d.ab3e18",
+        "type": "template",
+        "z": "c98e3fd140b6e9b6",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello World!</h1>\n    </body>\n</html>",
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "266c286f.d993d8"
+            ]
+        ]
+    },
+    {
+        "id": "266c286f.d993d8",
+        "type": "http response",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7ac55ccb59922410",
+        "type": "template",
+        "z": "c98e3fd140b6e9b6",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.query.name}}!</h1>\n    </body>\n</html>",
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "408c89f61c73504e"
+            ]
+        ]
+    },
+    {
+        "id": "5af8d7febcf7e142",
+        "type": "http in",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "url": "/hello-query",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "7ac55ccb59922410"
+            ]
+        ]
+    },
+    {
+        "id": "408c89f61c73504e",
+        "type": "http response",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ce53954b.31ac68",
+        "type": "http response",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "x": 630,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "288a7c0.fd77584",
+        "type": "template",
+        "z": "c98e3fd140b6e9b6",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.params.name}}!</h1>\n    </body>\n</html>",
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "ce53954b.31ac68"
+            ]
+        ]
+    },
+    {
+        "id": "7665c67d.899a38",
+        "type": "http in",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "url": "/hello-param/:name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "288a7c0.fd77584"
+            ]
+        ]
+    },
+    {
+        "id": "c1460268.3eba",
+        "type": "http in",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "url": "/hello-headers",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "24199456.dbe66c"
+            ]
+        ]
+    },
+    {
+        "id": "24199456.dbe66c",
+        "type": "template",
+        "z": "c98e3fd140b6e9b6",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>User agent: {{req.headers.user-agent}}</h1>\n    </body>\n</html>",
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "b3531892.4cace8"
+            ]
+        ]
+    },
+    {
+        "id": "b3531892.4cace8",
+        "type": "http response",
+        "z": "c98e3fd140b6e9b6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 380,
+        "wires": []
     }
 ]
