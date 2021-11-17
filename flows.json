@@ -88,6 +88,14 @@
         "env": []
     },
     {
+        "id": "6aba3d6b285da5df",
+        "type": "tab",
+        "label": "12. operate on array",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -1129,5 +1137,136 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "3149f240.c0e25e",
+        "type": "inject",
+        "z": "6aba3d6b285da5df",
+        "name": "Array of decimals",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[1.67,2.98,3.12,4.99,5.50]",
+        "payloadType": "json",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "bd57baa6.00f998"
+            ]
+        ]
+    },
+    {
+        "id": "bd57baa6.00f998",
+        "type": "split",
+        "z": "6aba3d6b285da5df",
+        "name": "Split array",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "7ab9e9ed.d514b8",
+                "fd856cc724cdeda3"
+            ]
+        ]
+    },
+    {
+        "id": "7ab9e9ed.d514b8",
+        "type": "range",
+        "z": "6aba3d6b285da5df",
+        "minin": "0",
+        "maxin": "10",
+        "minout": "0",
+        "maxout": "10",
+        "action": "scale",
+        "round": true,
+        "property": "payload",
+        "name": "Round value",
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [
+                "f26660ab.007b3"
+            ]
+        ]
+    },
+    {
+        "id": "f26660ab.007b3",
+        "type": "join",
+        "z": "6aba3d6b285da5df",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "f9b5abac.f13828"
+            ]
+        ]
+    },
+    {
+        "id": "f9b5abac.f13828",
+        "type": "debug",
+        "z": "6aba3d6b285da5df",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "fd856cc724cdeda3",
+        "type": "debug",
+        "z": "6aba3d6b285da5df",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 320,
+        "wires": []
     }
 ]
