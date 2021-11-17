@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "6b0555ce9153059a",
+        "type": "tab",
+        "label": "7. trigger on start",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -561,6 +569,37 @@
         "complete": "false",
         "x": 650,
         "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e60b12c1.93bb3",
+        "type": "inject",
+        "z": "6b0555ce9153059a",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "topic": "",
+        "payload": "Started!",
+        "payloadType": "str",
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "9b1d7727.56d0f8"
+            ]
+        ]
+    },
+    {
+        "id": "9b1d7727.56d0f8",
+        "type": "debug",
+        "z": "6b0555ce9153059a",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 530,
+        "y": 120,
         "wires": []
     }
 ]
