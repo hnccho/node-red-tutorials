@@ -2,7 +2,7 @@
     {
         "id": "faf14aee63fded2b",
         "type": "tab",
-        "label": "basic function",
+        "label": "1. basic function",
         "disabled": false,
         "info": "",
         "env": []
@@ -10,7 +10,15 @@
     {
         "id": "6c715b5a6ef774cd",
         "type": "tab",
-        "label": "http data parser",
+        "label": "2. http data parser",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a4eb5ad8062e8d43",
+        "type": "tab",
+        "label": "3. set property",
         "disabled": false,
         "info": "",
         "env": []
@@ -230,6 +238,78 @@
         "statusType": "auto",
         "x": 750,
         "y": 280,
+        "wires": []
+    },
+    {
+        "id": "d72dc4ce.89b368",
+        "type": "inject",
+        "z": "a4eb5ad8062e8d43",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 120,
+        "wires": [
+            [
+                "78075f19.e0174"
+            ]
+        ]
+    },
+    {
+        "id": "78075f19.e0174",
+        "type": "change",
+        "z": "a4eb5ad8062e8d43",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hello World!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "78dc7c25.b90d54"
+            ]
+        ]
+    },
+    {
+        "id": "78dc7c25.b90d54",
+        "type": "debug",
+        "z": "a4eb5ad8062e8d43",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 120,
         "wires": []
     }
 ]
