@@ -234,10 +234,76 @@
     {
         "id": "27c69a36f610fcf7",
         "type": "tab",
-        "label": "플로우 13",
+        "label": "30. http cookie handling",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "070a42f2ef6c709f",
+        "type": "tab",
+        "label": "31. http requests",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "574fb76869b53925",
+        "type": "tab",
+        "label": "32. mqtt",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "407a01e4.6b637",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "61de5090.0f5d9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "e16c9f593570b98f",
@@ -3815,6 +3881,750 @@
         "wires": [
             [
                 "d5205a2c.db9018"
+            ]
+        ]
+    },
+    {
+        "id": "84bcb7e058d906f6",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "make request",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 80,
+        "wires": [
+            [
+                "5c0973bfb2cc4440"
+            ]
+        ]
+    },
+    {
+        "id": "5c0973bfb2cc4440",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://nodered.org",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 374.5,
+        "y": 80,
+        "wires": [
+            [
+                "5edd83aa72d8620f"
+            ]
+        ]
+    },
+    {
+        "id": "6813d6b17accebd4",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 850,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5edd83aa72d8620f",
+        "type": "html",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "property": "",
+        "outproperty": "",
+        "tag": ".node-red-latest-version",
+        "ret": "text",
+        "as": "single",
+        "x": 590,
+        "y": 80,
+        "wires": [
+            [
+                "6813d6b17accebd4"
+            ]
+        ]
+    },
+    {
+        "id": "b36aa30.3a7276",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "1ef9987c.956c78"
+            ]
+        ]
+    },
+    {
+        "id": "11167f67.5d5031",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "cars on craigslist",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "http://vancouver.craigslist.org/search/sss?format=rss&query=cars",
+        "payloadType": "str",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "70154cd4.de1444"
+            ]
+        ]
+    },
+    {
+        "id": "70154cd4.de1444",
+        "type": "change",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "b36aa30.3a7276"
+            ]
+        ]
+    },
+    {
+        "id": "1ef9987c.956c78",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 850,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "41747a17.54ffd4",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://jsonplaceholder.typicode.com/posts/{{post}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "d682318c.36823"
+            ]
+        ]
+    },
+    {
+        "id": "d682318c.36823",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "90bfea22.dd2b98",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "post id",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "2",
+        "payloadType": "str",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "e67a0cc.596d4f"
+            ]
+        ]
+    },
+    {
+        "id": "e67a0cc.596d4f",
+        "type": "change",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "post",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "41747a17.54ffd4"
+            ]
+        ]
+    },
+    {
+        "id": "e95c6faa.ab2e1",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://query.yahooapis.com/v1/public/yql?q={{{query}}}&format=json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "7cf30700.5bc978"
+            ]
+        ]
+    },
+    {
+        "id": "7cf30700.5bc978",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 850,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "637d3c55.eb3084",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "query parameter",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "select astronomy.sunset from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"maui, hi\")",
+        "payloadType": "str",
+        "x": 220,
+        "y": 380,
+        "wires": [
+            [
+                "b001d489.d8f818"
+            ]
+        ]
+    },
+    {
+        "id": "b001d489.d8f818",
+        "type": "change",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "e95c6faa.ab2e1"
+            ]
+        ]
+    },
+    {
+        "id": "14c60a10.794df6",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://jsonplaceholder.typicode.com/posts/{{post}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 610,
+        "y": 480,
+        "wires": [
+            [
+                "b4ea8dd4.61a05"
+            ]
+        ]
+    },
+    {
+        "id": "b4ea8dd4.61a05",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload.title",
+        "x": 870,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "3479192a.04f016",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "post id",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "2",
+        "payloadType": "str",
+        "x": 190,
+        "y": 480,
+        "wires": [
+            [
+                "e69250cf.368fd"
+            ]
+        ]
+    },
+    {
+        "id": "e69250cf.368fd",
+        "type": "change",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "post",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 480,
+        "wires": [
+            [
+                "14c60a10.794df6"
+            ]
+        ]
+    },
+    {
+        "id": "871ee927.0d69c8",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 560,
+        "wires": [
+            [
+                "8ea4e52a.03d678"
+            ]
+        ]
+    },
+    {
+        "id": "8ea4e52a.03d678",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "binary http request",
+        "method": "GET",
+        "ret": "bin",
+        "url": "http://localhost:1880/binary",
+        "tls": "",
+        "x": 490,
+        "y": 560,
+        "wires": [
+            [
+                "70309d0c.4dc504"
+            ]
+        ]
+    },
+    {
+        "id": "70309d0c.4dc504",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 830,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "cb1dfcde.fd153",
+        "type": "function",
+        "z": "070a42f2ef6c709f",
+        "name": "set payload and headers",
+        "func": "msg.payload = \"data to post\";\nmsg.headers = {};\nmsg.headers['X-Auth-User'] = 'mike';\nmsg.headers['X-Auth-Key'] = 'fred-key';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 640,
+        "wires": [
+            [
+                "e44209e7.752698"
+            ]
+        ]
+    },
+    {
+        "id": "dcf34aab.218928",
+        "type": "inject",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 640,
+        "wires": [
+            [
+                "cb1dfcde.fd153"
+            ]
+        ]
+    },
+    {
+        "id": "e44209e7.752698",
+        "type": "http request",
+        "z": "070a42f2ef6c709f",
+        "name": "post to HttpBin",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://httpbin.org/post",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 620,
+        "y": 640,
+        "wires": [
+            [
+                "ee306582.f0dde8"
+            ]
+        ]
+    },
+    {
+        "id": "ee306582.f0dde8",
+        "type": "debug",
+        "z": "070a42f2ef6c709f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 870,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2c6873d2.992abc",
+        "type": "mqtt out",
+        "z": "574fb76869b53925",
+        "name": "",
+        "topic": "sensors/livingroom/temp",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "407a01e4.6b637",
+        "x": 410,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d9beed59.94155",
+        "type": "inject",
+        "z": "574fb76869b53925",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "22",
+        "payloadType": "num",
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "2c6873d2.992abc"
+            ]
+        ]
+    },
+    {
+        "id": "be80048.8f232f8",
+        "type": "mqtt in",
+        "z": "574fb76869b53925",
+        "name": "",
+        "topic": "sensors/livingroom/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "407a01e4.6b637",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "8640b8ff.f82ff8"
+            ]
+        ]
+    },
+    {
+        "id": "8640b8ff.f82ff8",
+        "type": "debug",
+        "z": "574fb76869b53925",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8024cb4.98c5238",
+        "type": "mqtt in",
+        "z": "574fb76869b53925",
+        "name": "",
+        "topic": "sensors/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "61de5090.0f5d9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "b5098b7f.2361d8"
+            ]
+        ]
+    },
+    {
+        "id": "15d727dd.33e808",
+        "type": "debug",
+        "z": "574fb76869b53925",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 630,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2aed678c.3de738",
+        "type": "mqtt out",
+        "z": "574fb76869b53925",
+        "name": "",
+        "topic": "sensors/livingroom/temp",
+        "qos": "",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "61de5090.0f5d9",
+        "x": 410,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3b613a69.a247c6",
+        "type": "inject",
+        "z": "574fb76869b53925",
+        "name": "temp json",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "{\"sensor_id\":1234,\"temperature\":13}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "2aed678c.3de738"
+            ]
+        ]
+    },
+    {
+        "id": "b5098b7f.2361d8",
+        "type": "json",
+        "z": "574fb76869b53925",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "15d727dd.33e808"
             ]
         ]
     }
