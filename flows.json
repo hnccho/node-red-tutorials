@@ -96,6 +96,22 @@
         "env": []
     },
     {
+        "id": "9e34082b516bdce7",
+        "type": "tab",
+        "label": "13. trigger timeout",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bba78dc4a29f4bdc",
+        "type": "tab",
+        "label": "14. trigger placeholder",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -1268,5 +1284,184 @@
         "x": 680,
         "y": 320,
         "wires": []
+    },
+    {
+        "id": "6ea53ad8.2362a4",
+        "type": "debug",
+        "z": "9e34082b516bdce7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3da6946e.184a5c",
+        "type": "inject",
+        "z": "9e34082b516bdce7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "38caaff4.03f6d",
+                "6ea53ad8.2362a4"
+            ]
+        ]
+    },
+    {
+        "id": "38caaff4.03f6d",
+        "type": "trigger",
+        "z": "9e34082b516bdce7",
+        "name": "Watchdog",
+        "op1": "",
+        "op2": "timeout",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "ae477709.016088"
+            ]
+        ]
+    },
+    {
+        "id": "ae477709.016088",
+        "type": "debug",
+        "z": "9e34082b516bdce7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 610,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9ccdf268.c96ff",
+        "type": "inject",
+        "z": "bba78dc4a29f4bdc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "38950a5.28d15f6",
+                "2c532f67.0330e"
+            ]
+        ]
+    },
+    {
+        "id": "38950a5.28d15f6",
+        "type": "debug",
+        "z": "bba78dc4a29f4bdc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2c532f67.0330e",
+        "type": "trigger",
+        "z": "bba78dc4a29f4bdc",
+        "name": "",
+        "op1": "reset",
+        "op2": "true",
+        "op1type": "str",
+        "op2type": "bool",
+        "duration": "2",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "e4e42b96.97a338"
+            ]
+        ]
+    },
+    {
+        "id": "e4e42b96.97a338",
+        "type": "trigger",
+        "z": "bba78dc4a29f4bdc",
+        "name": "",
+        "op1": "0",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "str",
+        "duration": "-2",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "reset",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 540,
+        "y": 140,
+        "wires": [
+            [
+                "38950a5.28d15f6"
+            ]
+        ]
     }
 ]
