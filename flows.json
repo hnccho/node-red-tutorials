@@ -57,7 +57,7 @@
         "type": "function",
         "z": "faf14aee63fded2b",
         "name": "",
-        "func": "// Create a Date object from the payload\nvar date = new Date(msg.payload);\n// Change the payload to be a formatted Date string\nmsg.payload = date.toString();\n// Return the message so it can be sent on\nreturn msg;",
+        "func": "// Create a Date object from the payload\nvar date = new Date(msg.payload);\n// Change the payload to be a formatted Date string\nmsg.payload = `지금은 ${date.toLocaleString()} 입니다.`;\n// Return the message so it can be sent on\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
