@@ -130,7 +130,15 @@
     {
         "id": "252dafafbb5e8ebd",
         "type": "tab",
-        "label": "플로우 17",
+        "label": "17. join streams",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5cfa383c8e9d339e",
+        "type": "tab",
+        "label": "18. trigger on error",
         "disabled": false,
         "info": "",
         "env": []
@@ -1857,6 +1865,85 @@
         "wires": [
             [
                 "47b769c5.cb0e28"
+            ]
+        ]
+    },
+    {
+        "id": "2bd6810d.e22ece",
+        "type": "catch",
+        "z": "5cfa383c8e9d339e",
+        "name": "",
+        "scope": [
+            "2c94a22c.91012e"
+        ],
+        "uncaught": false,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "d16b9fac.8212a"
+            ]
+        ]
+    },
+    {
+        "id": "2c94a22c.91012e",
+        "type": "function",
+        "z": "5cfa383c8e9d339e",
+        "name": "Throw Error",
+        "func": "node.error(\"an example error\", msg);   ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d16b9fac.8212a",
+        "type": "debug",
+        "z": "5cfa383c8e9d339e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c5ee9670.5dbbd8",
+        "type": "inject",
+        "z": "5cfa383c8e9d339e",
+        "name": "Trigger error",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 120,
+        "wires": [
+            [
+                "2c94a22c.91012e"
             ]
         ]
     }
