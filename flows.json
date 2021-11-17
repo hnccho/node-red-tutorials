@@ -128,6 +128,14 @@
         "env": []
     },
     {
+        "id": "252dafafbb5e8ebd",
+        "type": "tab",
+        "label": "플로우 17",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -1191,8 +1199,8 @@
         "topic": "",
         "payload": "[1.67,2.98,3.12,4.99,5.50]",
         "payloadType": "json",
-        "x": 260,
-        "y": 100,
+        "x": 220,
+        "y": 80,
         "wires": [
             [
                 "bd57baa6.00f998"
@@ -1231,7 +1239,7 @@
         "round": true,
         "property": "payload",
         "name": "Round value",
-        "x": 490,
+        "x": 550,
         "y": 160,
         "wires": [
             [
@@ -1259,7 +1267,7 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 630,
+        "x": 750,
         "y": 160,
         "wires": [
             [
@@ -1280,7 +1288,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
+        "x": 810,
         "y": 220,
         "wires": []
     },
@@ -1297,8 +1305,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 320,
+        "x": 550,
+        "y": 300,
         "wires": []
     },
     {
@@ -1729,6 +1737,126 @@
         "wires": [
             [
                 "87129503.c7b358"
+            ]
+        ]
+    },
+    {
+        "id": "8ccddb9a.a55f38",
+        "type": "inject",
+        "z": "252dafafbb5e8ebd",
+        "name": "temperature",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "temperature",
+        "payload": "20",
+        "payloadType": "num",
+        "x": 250,
+        "y": 100,
+        "wires": [
+            [
+                "47b769c5.cb0e28"
+            ]
+        ]
+    },
+    {
+        "id": "47b769c5.cb0e28",
+        "type": "join",
+        "z": "252dafafbb5e8ebd",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "f9afb265.b11b7"
+            ]
+        ]
+    },
+    {
+        "id": "f9afb265.b11b7",
+        "type": "debug",
+        "z": "252dafafbb5e8ebd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 610,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "2d269127.4f04ce",
+        "type": "inject",
+        "z": "252dafafbb5e8ebd",
+        "name": "humidity",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "humidity",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "47b769c5.cb0e28"
+            ]
+        ]
+    },
+    {
+        "id": "d6fbe805.0e4628",
+        "type": "inject",
+        "z": "252dafafbb5e8ebd",
+        "name": "pressure",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "pressure",
+        "payload": "999",
+        "payloadType": "num",
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "47b769c5.cb0e28"
             ]
         ]
     }
