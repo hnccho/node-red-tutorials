@@ -218,7 +218,7 @@
     {
         "id": "1f7d7ff06c12347b",
         "type": "tab",
-        "label": "플로우 11",
+        "label": "28. http flow data output",
         "disabled": false,
         "info": "",
         "env": []
@@ -3205,6 +3205,290 @@
         "statusCode": "",
         "headers": {},
         "x": 590,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "92eaf6c0.6d1508",
+        "type": "inject",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "8055b557.7faa48"
+            ]
+        ]
+    },
+    {
+        "id": "8055b557.7faa48",
+        "type": "change",
+        "z": "1f7d7ff06c12347b",
+        "name": "Store time",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "93bf2335.6c40e",
+        "type": "http in",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "url": "/hello-data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "9e3aa25e.61c56"
+            ]
+        ]
+    },
+    {
+        "id": "9e3aa25e.61c56",
+        "type": "change",
+        "z": "1f7d7ff06c12347b",
+        "name": "Copy time",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "timestamp",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "f2c385a.f0d3c78"
+            ]
+        ]
+    },
+    {
+        "id": "f2c385a.f0d3c78",
+        "type": "template",
+        "z": "1f7d7ff06c12347b",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Time: {{ timestamp }}</h1>\n    </body>\n</html>",
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "def756a1.2108a8"
+            ]
+        ]
+    },
+    {
+        "id": "def756a1.2108a8",
+        "type": "http response",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c8107088.37ef9",
+        "type": "http in",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "url": "/hello-json",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "4e8237da.b17dc8"
+            ]
+        ]
+    },
+    {
+        "id": "4e8237da.b17dc8",
+        "type": "template",
+        "z": "1f7d7ff06c12347b",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{ \"Hello\": \"World\" }",
+        "x": 450,
+        "y": 280,
+        "wires": [
+            [
+                "65401623.9abfe8"
+            ]
+        ]
+    },
+    {
+        "id": "65401623.9abfe8",
+        "type": "change",
+        "z": "1f7d7ff06c12347b",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "f7d3e35a.082c2"
+            ]
+        ]
+    },
+    {
+        "id": "f7d3e35a.082c2",
+        "type": "http response",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c7e341a0.381cc",
+        "type": "http in",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "url": "/hello-file",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "2fb1c354.d04e3c"
+            ]
+        ]
+    },
+    {
+        "id": "2fb1c354.d04e3c",
+        "type": "file in",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "filename": "/Temp/node-red.png",
+        "format": "",
+        "allProps": false,
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [
+                "c9e28681.361d78"
+            ]
+        ]
+    },
+    {
+        "id": "c9e28681.361d78",
+        "type": "change",
+        "z": "1f7d7ff06c12347b",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 380,
+        "wires": [
+            [
+                "88974243.7768c"
+            ]
+        ]
+    },
+    {
+        "id": "88974243.7768c",
+        "type": "http response",
+        "z": "1f7d7ff06c12347b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
         "y": 380,
         "wires": []
     }
