@@ -176,6 +176,30 @@
         "env": []
     },
     {
+        "id": "1af9ca5e11d95b5f",
+        "type": "tab",
+        "label": "23. csv output",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "94668557a0b0abe9",
+        "type": "tab",
+        "label": "24. csv parse",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "021de316203607d6",
+        "type": "tab",
+        "label": "25. html parse",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -2479,6 +2503,365 @@
         "wires": [
             [
                 "8f8f31b7.1f916"
+            ]
+        ]
+    },
+    {
+        "id": "457d9ad6.b737b4",
+        "type": "inject",
+        "z": "1af9ca5e11d95b5f",
+        "name": "single",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "1e05fafd.887b05"
+            ]
+        ]
+    },
+    {
+        "id": "1e05fafd.887b05",
+        "type": "change",
+        "z": "1af9ca5e11d95b5f",
+        "name": "Generate single payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ \"a\":$floor(100*$random()),\"b\":$floor(100*$random()),\"c\":$floor(100*$random())}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "e9546682.b39898"
+            ]
+        ]
+    },
+    {
+        "id": "e9546682.b39898",
+        "type": "csv",
+        "z": "1af9ca5e11d95b5f",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "a,b,c",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 610,
+        "y": 160,
+        "wires": [
+            [
+                "f83ad3b0.78d32"
+            ]
+        ]
+    },
+    {
+        "id": "f83ad3b0.78d32",
+        "type": "debug",
+        "z": "1af9ca5e11d95b5f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ae242f2c.d1c8a",
+        "type": "inject",
+        "z": "1af9ca5e11d95b5f",
+        "name": "array",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "7535f521.4a88bc"
+            ]
+        ]
+    },
+    {
+        "id": "7535f521.4a88bc",
+        "type": "change",
+        "z": "1af9ca5e11d95b5f",
+        "name": "Generate array payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "[\t    { \"a\":$floor(100*$random()),\"b\":$floor(100*$random()),\"c\":$floor(100*$random())},\t    { \"a\":$floor(100*$random()),\"b\":$floor(100*$random()),\"c\":$floor(100*$random())},\t    { \"a\":$floor(100*$random()),\"b\":$floor(100*$random()),\"c\":$floor(100*$random())},\t    { \"a\":$floor(100*$random()),\"b\":$floor(100*$random()),\"c\":$floor(100*$random())}\t]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "f4e0465f.ef0338"
+            ]
+        ]
+    },
+    {
+        "id": "f4e0465f.ef0338",
+        "type": "csv",
+        "z": "1af9ca5e11d95b5f",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "all",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "a,b,c",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "6eb67fdf.58626"
+            ]
+        ]
+    },
+    {
+        "id": "6eb67fdf.58626",
+        "type": "debug",
+        "z": "1af9ca5e11d95b5f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 750,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "73e4e16.4d9742",
+        "type": "inject",
+        "z": "94668557a0b0abe9",
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "2bef78fd.ae70f8"
+            ]
+        ]
+    },
+    {
+        "id": "90ed51dc.dcc71",
+        "type": "csv",
+        "z": "94668557a0b0abe9",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "1",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "9aace6e7.adc538"
+            ]
+        ]
+    },
+    {
+        "id": "9aace6e7.adc538",
+        "type": "debug",
+        "z": "94668557a0b0abe9",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2bef78fd.ae70f8",
+        "type": "template",
+        "z": "94668557a0b0abe9",
+        "name": "CSV data",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "# This is some random data\na,b,c\n80,18,2\n52,36,10\n91,18,61\n32,47,65",
+        "output": "str",
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "90ed51dc.dcc71"
+            ]
+        ]
+    },
+    {
+        "id": "d88dd470.0ac7b8",
+        "type": "inject",
+        "z": "021de316203607d6",
+        "name": "make request",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "874a3d4e.9b666"
+            ]
+        ]
+    },
+    {
+        "id": "874a3d4e.9b666",
+        "type": "http request",
+        "z": "021de316203607d6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://nodered.org",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 394.5,
+        "y": 140,
+        "wires": [
+            [
+                "90243cc1.87edc"
+            ]
+        ]
+    },
+    {
+        "id": "7403c68f.21d7c8",
+        "type": "debug",
+        "z": "021de316203607d6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "90243cc1.87edc",
+        "type": "html",
+        "z": "021de316203607d6",
+        "name": "",
+        "property": "",
+        "outproperty": "",
+        "tag": ".node-red-latest-version",
+        "ret": "text",
+        "as": "single",
+        "x": 730,
+        "y": 140,
+        "wires": [
+            [
+                "7403c68f.21d7c8"
             ]
         ]
     }
