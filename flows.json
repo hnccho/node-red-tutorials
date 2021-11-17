@@ -24,6 +24,14 @@
         "env": []
     },
     {
+        "id": "dd86e8ee0fe5eb64",
+        "type": "tab",
+        "label": "4. delete property",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -309,6 +317,62 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "91cd2fa9.e0a96",
+        "type": "inject",
+        "z": "dd86e8ee0fe5eb64",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "54ec03e4.5714bc"
+            ]
+        ]
+    },
+    {
+        "id": "54ec03e4.5714bc",
+        "type": "change",
+        "z": "dd86e8ee0fe5eb64",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "321900de.3cbea"
+            ]
+        ]
+    },
+    {
+        "id": "321900de.3cbea",
+        "type": "debug",
+        "z": "dd86e8ee0fe5eb64",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 730,
         "y": 120,
         "wires": []
     }
