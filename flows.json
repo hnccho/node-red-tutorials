@@ -114,7 +114,15 @@
     {
         "id": "6297bde743341eaa",
         "type": "tab",
-        "label": "플로우 15",
+        "label": "15. rate limit",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "69f81de7395b8497",
+        "type": "tab",
+        "label": "플로우 16",
         "disabled": false,
         "info": "",
         "env": []
@@ -1560,6 +1568,75 @@
         "statusType": "auto",
         "x": 640,
         "y": 140,
+        "wires": []
+    },
+    {
+        "id": "0bf3188805321148",
+        "type": "inject",
+        "z": "6297bde743341eaa",
+        "name": "Inject Array",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0,1,2,3,4,5,6,7,8,9]",
+        "payloadType": "json",
+        "x": 220,
+        "y": 240,
+        "wires": [
+            [
+                "482a80d055055d19"
+            ]
+        ]
+    },
+    {
+        "id": "482a80d055055d19",
+        "type": "delay",
+        "z": "6297bde743341eaa",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "619f1f87992fbf01"
+            ]
+        ]
+    },
+    {
+        "id": "619f1f87992fbf01",
+        "type": "debug",
+        "z": "6297bde743341eaa",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 620,
+        "y": 240,
         "wires": []
     }
 ]
