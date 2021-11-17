@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "edfc94da89d598f8",
+        "type": "tab",
+        "label": "6.  map range",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -454,6 +462,105 @@
         "statusType": "auto",
         "x": 690,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "80dae67d.b4d8f8",
+        "type": "inject",
+        "z": "edfc94da89d598f8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "81f13534.456348"
+            ]
+        ]
+    },
+    {
+        "id": "81f13534.456348",
+        "type": "range",
+        "z": "edfc94da89d598f8",
+        "minin": "0",
+        "maxin": "1023",
+        "minout": "0",
+        "maxout": "5",
+        "action": "clamp",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "e80b61d7.4b399"
+            ]
+        ]
+    },
+    {
+        "id": "cb21de23.75a2f",
+        "type": "inject",
+        "z": "edfc94da89d598f8",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "512",
+        "payloadType": "num",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "81f13534.456348"
+            ]
+        ]
+    },
+    {
+        "id": "342552de.255a1e",
+        "type": "inject",
+        "z": "edfc94da89d598f8",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "1023",
+        "payloadType": "num",
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "81f13534.456348"
+            ]
+        ]
+    },
+    {
+        "id": "e80b61d7.4b399",
+        "type": "debug",
+        "z": "edfc94da89d598f8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 650,
+        "y": 140,
         "wires": []
     }
 ]
