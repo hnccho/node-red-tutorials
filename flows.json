@@ -32,6 +32,14 @@
         "env": []
     },
     {
+        "id": "0bbcd403e39777a4",
+        "type": "tab",
+        "label": "5. move property",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e16c9f593570b98f",
         "type": "inject",
         "z": "faf14aee63fded2b",
@@ -373,6 +381,78 @@
         "console": "false",
         "complete": "false",
         "x": 730,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d11f7311.77c15",
+        "type": "inject",
+        "z": "0bbcd403e39777a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "Hello",
+        "payloadType": "date",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "13c01487.eb13cb"
+            ]
+        ]
+    },
+    {
+        "id": "13c01487.eb13cb",
+        "type": "change",
+        "z": "0bbcd403e39777a4",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "89cc4fb1.9b208"
+            ]
+        ]
+    },
+    {
+        "id": "89cc4fb1.9b208",
+        "type": "debug",
+        "z": "0bbcd403e39777a4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
         "y": 120,
         "wires": []
     }
